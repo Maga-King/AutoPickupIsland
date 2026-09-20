@@ -1,4 +1,6 @@
 * text=auto
+# Preserve OEM resources/XML and scripts exactly as supplied in the APK assets.
+**/src/main/assets/** -text
 /gradlew text eol=lf
 *.bat text eol=crlf
 *.jar binary
