@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Required on Android 14+ for JobScheduler connectivity constraints. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <queries>
+        <package android:name="com.miui.contentcatcher" />
+        <package android:name="io.github.mio.fixtureloader" />
+        <package android:name="io.github.mio.collectorcarrier" />
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.eg.android.AlipayGphone" />
+        <package android:name="com.xiaomi.aicr" />
+        <package android:name="com.xiaomi.aiasst.service" />
+        <package android:name="com.miui.voiceassist" />
+        <package android:name="io.github.mio.autopickupfixture" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:hasCode="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".CloudSyncJob"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+        <receiver android:name=".CloudSyncJob$TimeChangedReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".PageChangeSignalService"
+            android:label="@string/page_change_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/page_change_service" />
+        </service>
+
+        <provider
+            android:name=".BridgeProvider"
+            android:authorities="io.github.mio.autopickupisland.bridge"
+            android:directBootAware="false"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <receiver
+            android:name=".BridgeReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
+
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposedscope" android:resource="@array/module_scope" />
+        <meta-data android:name="xposeddescription" android:value="@string/xposed_desc" />
+        <meta-data
+            android:name="xposedinit"
+            android:value="io.github.mio.autopickupisland.HookEntry" />
+        <meta-data android:name="xposedminversion" android:value="82" />
+    </application>
+</manifest>

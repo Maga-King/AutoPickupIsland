@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  RemoteViews-safe transcription of ColorOS AIFluidCloud's
+  card_modular_center_access_code template. The measurements come from the
+  Seedling renderer shipped in AIFluidCloud.upk; only ColorOS-only view classes
+  are replaced with framework widgets accepted by HyperOS.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coloros_pickup_root"
+    android:layout_width="match_parent"
+    android:layout_height="117dp"
+    android:background="@drawable/coloros_pickup_card_base">
+
+    <ImageView
+        android:id="@+id/coloros_pickup_card_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/coloros_pickup_card_tint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- ColorOS level D19/D20 area. -->
+        <FrameLayout
+            android:id="@+id/coloros_pickup_model_area"
+            android:layout_width="100dp"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="117dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/coloros_pickup_model"
+                    android:layout_width="100dp"
+                    android:layout_height="117dp"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/coloros_pickup_sticker"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="42dp"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/coloros_pickup_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1">
+
+            <!-- ColorOS level E4 capsule: 34dp tall, 12dp horizontal padding. -->
+            <FrameLayout
+                android:id="@+id/coloros_pickup_action_container"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:minWidth="108dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/coloros_pickup_action_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/coloros_pickup_action_bg" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/coloros_pickup_button_icon" />
+
+                    <TextView
+                        android:id="@+id/coloros_pickup_action_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="mipro-demibold"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="确认取餐"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- ColorOS C1: fontSize4, weight 600. -->
+            <TextView
+                android:id="@+id/coloros_pickup_product"
+                android:tag="mio_auto_pickup_marquee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/coloros_pickup_action_container"
+                android:ellipsize="marquee"
+                android:fontFamily="mipro-demibold"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="1"
+                android:requiresFadingEdge="horizontal"
+                android:fadingEdgeLength="8dp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+
+            <!-- ColorOS C2: fontSize2, weight 500, 2dp below C1. -->
+            <TextView
+                android:id="@+id/coloros_pickup_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/coloros_pickup_product"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/coloros_pickup_action_container"
+                android:ellipsize="end"
+                android:fontFamily="mipro"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="查看制作进度"
+                android:textColor="#99FFFFFF"
+                android:textSize="12sp" />
+
+            <!-- ColorOS DotLineView supplied as a generated, non-stretched bitmap. -->
+            <ImageView
+                android:id="@+id/coloros_pickup_divider"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="60dp"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop" />
+
+            <!-- ColorOS B1: numeric pickup codes use fontSize8 (28sp). -->
+            <TextView
+                android:id="@+id/coloros_pickup_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:fontFamily="mipro-demibold"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textSize="28sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,27 @@
+# Explicit root allowlist: do not publish device dumps, logs or screenshots.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/build.gradle.kts
+!/settings.gradle.kts
+!/gradle.properties
+!/gradlew
+!/gradlew.bat
+!/gradle/
+!/app/
+!/collector-carrier/
+!/fixture-loader/
+!/os4-api-stubs/
+!/shared/
+!/testapp/
+!/vendor/
+**/build/
+**/.gradle/
+**/.idea/
+**/.cxx/
+**/local.properties
+**/*.jks
+**/*.keystore
+**/debug.keystore
+**/.DS_Store

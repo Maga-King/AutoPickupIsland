@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ColorOS 自动取餐码上岛</string>
+    <string name="xposed_desc">三合一：内置系统装载、ColorOS DOM 读取和原生上岛。勾选系统框架及四个推荐系统应用后重启，无需额外 APK 或文件开关。</string>
+</resources>

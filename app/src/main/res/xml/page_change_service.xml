@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:notificationTimeout="300"
+    android:packageNames="io.github.mio.autopickupfixture"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/page_change_description"
+    android:settingsActivity="io.github.mio.autopickupisland.MainActivity" />

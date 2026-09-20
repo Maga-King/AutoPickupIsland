@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:label="系统采集装载实验（仅测试包）" android:allowBackup="false" android:hasCode="true">
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposedminversion" android:value="82" />
+        <meta-data android:name="xposeddescription" android:value="仅对本项目签名的测试包生效，默认关闭；不作用于微信或 QQ。" />
+        <meta-data android:name="xposedscope" android:resource="@array/module_scope" />
+    </application>
+</manifest>

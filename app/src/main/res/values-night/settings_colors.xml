@@ -1,0 +1,10 @@
+<resources>
+    <color name="settings_primary">#FFB4A5</color>
+    <color name="settings_on_primary">#5C1C13</color>
+    <color name="settings_container">#763027</color>
+    <color name="settings_background">#191210</color>
+    <color name="settings_surface">#271D1A</color>
+    <color name="settings_on_surface">#F4DED7</color>
+    <color name="settings_secondary">#D1BBB4</color>
+    <bool name="settings_light_bars">false</bool>
+</resources>

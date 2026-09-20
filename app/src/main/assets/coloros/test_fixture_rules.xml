@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <version>fixture-1</version>
+
+    <scan isWebView="false" category="tea" label="MIO 测试蜜雪" package_name="io.github.mio.autopickupfixture">
+        <app_name>蜜雪冰城</app_name>
+        <brand_name>蜜雪冰城</brand_name>
+        <monitor_activities>
+            <item ac="io.github.mio.autopickupfixture.TeaPickupActivity" ignoreVis="true" useCloud="true" />
+        </monitor_activities>
+        <tag_ai_app_name>icecreamtea</tag_ai_app_name>
+        <launch_path>io.github.mio.autopickupfixture.TeaPickupActivity</launch_path>
+        <app_logo>applogo/mixuebingcheng.png</app_logo>
+        <stickers>stickers/mixuebingcheng.png</stickers>
+        <pickup_btn_color>#DA3C48</pickup_btn_color>
+        <pickup_code_color>#DA3C48</pickup_code_color>
+        <card_bg_color>#DA3C48</card_bg_color>
+        <card_bg_alpha>0.12</card_bg_alpha>
+    </scan>
+
+    <scan isWebView="false" category="coffee" label="MIO 测试星巴克" package_name="io.github.mio.autopickupfixture">
+        <app_name>星巴克咖啡</app_name>
+        <brand_name>星巴克</brand_name>
+        <monitor_activities>
+            <item ac="io.github.mio.autopickupfixture.CoffeePickupActivity" ignoreVis="true" useCloud="true" />
+        </monitor_activities>
+        <tag_ai_app_name>starbucks</tag_ai_app_name>
+        <launch_path>io.github.mio.autopickupfixture.CoffeePickupActivity</launch_path>
+        <app_logo>applogo/xingbake.png</app_logo>
+        <stickers>stickers/xingbake.png</stickers>
+        <pickup_btn_color>#00643C</pickup_btn_color>
+        <pickup_code_color>#00B26B</pickup_code_color>
+        <card_bg_color>#00643C</card_bg_color>
+        <card_bg_alpha>0.12</card_bg_alpha>
+    </scan>
+
+    <scan isWebView="false" category="catering" label="MIO 测试肯德基" package_name="io.github.mio.autopickupfixture">
+        <app_name>肯德基</app_name>
+        <brand_name>肯德基</brand_name>
+        <monitor_activities>
+            <item ac="io.github.mio.autopickupfixture.CateringPickupActivity" ignoreVis="true" useCloud="false" />
+        </monitor_activities>
+        <tag_ai_app_name>kfc</tag_ai_app_name>
+        <launch_path>io.github.mio.autopickupfixture.CateringPickupActivity</launch_path>
+        <app_logo>applogo/kendeji.png</app_logo>
+        <base_bg_style>base_bg_takeout_style_kendeji.webp</base_bg_style>
+        <aod_static_image>aod_static_takeout_kendeji.webp</aod_static_image>
+        <pickup_btn_color>#E40031</pickup_btn_color>
+        <pickup_code_color>#FC325E</pickup_code_color>
+        <card_bg_color>#E40031</card_bg_color>
+        <card_bg_alpha>0.12</card_bg_alpha>
+    </scan>
+
+    <scan isWebView="true" category="tea" label="MIO WebView 蜜雪" package_name="io.github.mio.autopickupfixture">
+        <app_name>蜜雪冰城</app_name>
+        <brand_name>蜜雪冰城</brand_name>
+        <filter_paths>
+            <item path="pages/order_detail/take/index" useCloud="true" />
+        </filter_paths>
+        <black_paths>pages/menu/index</black_paths>
+        <tag_ai_app_name>icecreamtea</tag_ai_app_name>
+        <origin_id>gh_mio_fixture_mixue</origin_id>
+        <launch_path>io.github.mio.autopickupfixture.WebPickupActivity</launch_path>
+        <app_package>io.github.mio.autopickupfixture</app_package>
+        <app_logo>applogo/mixuebingcheng.png</app_logo>
+        <stickers>stickers/mixuebingcheng.png</stickers>
+        <pickup_btn_color>#DA3C48</pickup_btn_color>
+        <pickup_code_color>#DA3C48</pickup_code_color>
+        <card_bg_color>#DA3C48</card_bg_color>
+        <card_bg_alpha>0.12</card_bg_alpha>
+        <extract_wx_root_portal>true</extract_wx_root_portal>
+    </scan>
+</config>

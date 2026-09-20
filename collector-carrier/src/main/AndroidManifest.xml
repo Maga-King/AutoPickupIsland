@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries><package android:name="com.miui.contentcatcher" /></queries>
+    <!-- Code-only, no services/providers/receivers/launcher/permissions/auto-start. -->
+    <application android:label="取餐码采集组件（仅测试）" android:allowBackup="false"
+        android:hasCode="true" android:usesCleartextTraffic="false" />
+</manifest>

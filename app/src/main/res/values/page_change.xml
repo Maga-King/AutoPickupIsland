@@ -1,0 +1,4 @@
+<resources>
+    <string name="page_change_label">取餐码页面变化信号（可选）</string>
+    <string name="page_change_description">仅接收规则所含应用的页面内容变化事件，用于触发已有的前台取餐页识别。不读取无障碍节点、事件文本或截屏，不执行点击，不向微信/QQ注入。默认未开启，关闭不影响原有自动识别和三指手动识别。图像兜底仍由模块内两个开关独立控制。</string>
+</resources>
