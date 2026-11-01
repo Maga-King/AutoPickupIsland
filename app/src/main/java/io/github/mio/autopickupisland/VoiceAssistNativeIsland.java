@@ -574,14 +574,10 @@ final class VoiceAssistNativeIsland {
         } catch (Throwable ignored) {
         }
 
-        Icon animated = animatedIcon(decoration.model);
-        bindContentClicksAndIcon(notification, decoration.open, animated);
-        if (animated != null) {
-            Bundle pictures = extras.getBundle("miui.focus.pics");
-            if (pictures == null) pictures = new Bundle();
-            pictures.putParcelable(pictureKey(decoration.scene), animated);
-            extras.putBundle("miui.focus.pics", pictures);
-        }
+        // Native visual diagnostic: keep XiaoAi-generated icons and focus pictures intact.
+        // Retain click bindings without replacing any image with a module-owned asset.
+        bindContentClicksAndIcon(notification, decoration.open, null);
+        log("diagnostic: XiaoAi native icons/pics preserved; module image injection disabled");
 
         // Diagnostic build: preserve the original XiaoAi MemoryScene RemoteViews.
         // Do not replace miui.focus.rv, miui.focus.rvNight or

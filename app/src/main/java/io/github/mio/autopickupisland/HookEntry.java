@@ -33,10 +33,8 @@ public final class HookEntry implements IXposedHookLoadPackage, IXposedHookZygot
                 }
                 case Constants.PKG_PRIVILEGED_ASSIST -> PrivilegedAssistHook.install(lpparam);
                 case Constants.PKG_SYSTEM_UI -> {
-                    SystemUiAnimationHook.install(lpparam);
-                    if (Constants.PKG_SYSTEM_UI.equals(lpparam.processName)) {
-                        SystemUiNotificationBackgroundHook.install(lpparam.classLoader);
-                    }
+                    // Native visual diagnostic: no module animation or background overrides.
+                    XposedBridge.log("AutoPickupIsland/SystemUI: diagnostic native visual mode; animation and background hooks disabled");
                 }
                 default -> {
                 }
