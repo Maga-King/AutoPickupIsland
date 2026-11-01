@@ -574,33 +574,16 @@ final class VoiceAssistNativeIsland {
         } catch (Throwable ignored) {
         }
 
-        Icon animated = animatedIcon(decoration.model);
-        bindContentClicksAndIcon(notification, decoration.open, animated);
-        if (animated != null) {
-            Bundle pictures = extras.getBundle("miui.focus.pics");
-            if (pictures == null) pictures = new Bundle();
-            pictures.putParcelable(pictureKey(decoration.scene), animated);
-            extras.putBundle("miui.focus.pics", pictures);
-        }
+        // Native visual diagnostic: keep XiaoAi-generated icons and focus pictures intact.
+        // Retain click bindings without replacing any image with a module-owned asset.
+        bindContentClicksAndIcon(notification, decoration.open, null);
+        log("diagnostic: XiaoAi native icons/pics preserved; module image injection disabled");
 
-        // Keep Xiaomi's MemoryScene notification lifecycle, tiny island, focus whitelist and
-        // dismissal receiver. Only our marked automatic expanded views are replaced. If the
-        // official confirmation PendingIntent cannot be resolved, fail closed and retain the
-        // complete Xiaomi card instead of installing a visually working but unsafe button.
-        PendingIntent confirm = resolveOfficialConfirmPendingIntent(notificationId);
-        if (confirm != null) {
-            try {
-                RemoteViews expanded = buildColorOsExpandedView(decoration, animated, confirm);
-                extras.putParcelable("miui.focus.rv", expanded);
-                extras.putParcelable("miui.focus.rvNight", expanded);
-                extras.putParcelable("miui.focus.rv.island.expand", expanded);
-                log("installed ColorOS expanded layout with Xiaomi confirm action");
-            } catch (Throwable error) {
-                log("ColorOS expanded layout skipped safely: " + rootMessage(error));
-            }
-        } else {
-            log("official confirm action unavailable; retained Xiaomi expanded card");
-        }
+        // Diagnostic build: preserve the original XiaoAi MemoryScene RemoteViews.
+        // Do not replace miui.focus.rv, miui.focus.rvNight or
+        // miui.focus.rv.island.expand with module-owned ColorOS views.
+        // Keep all other decoration, tiny island and lifecycle logic unchanged.
+        log("diagnostic: preserved official XiaoAi expanded RemoteViews; ColorOS override disabled");
         enableFloat(notification);
         log("decorated official MemoryScene card; tiny island and lifecycle untouched");
     }

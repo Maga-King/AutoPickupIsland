@@ -1,0 +1,74 @@
+
+name: Build AutoPickupIsland APKs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Android APKs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # 1. 拉取项目源码
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      # 2. 配置 JDK 17
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      # 3. 配置 Android SDK
+      # 显式指定 packages，避免安装已废弃的 tools 包
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+
+      # 4. 授予 Gradle Wrapper 执行权限
+      - name: Grant Gradle permission
+        run: chmod +x gradlew
+
+      # 5. 编译主程序和测试程序
+      - name: Build APKs
+        run: |
+          ./gradlew \
+            :app:assembleDebug \
+            :testapp:assembleDebug \
+            --stacktrace
+
+      # 6. 查看生成的 APK 文件
+      - name: List APK files
+        run: |
+          find app/build/outputs/apk \
+               testapp/build/outputs/apk \
+               -type f -name "*.apk"
+
+      # 7. 上传主程序 APK
+      - name: Upload Main APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoPickupIsland
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      # 8. 上传测试程序 APK
+      - name: Upload Test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoPickupIsland-Test
+          path: testapp/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
